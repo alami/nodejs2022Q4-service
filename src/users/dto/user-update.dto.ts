@@ -6,8 +6,12 @@ export class UserUpdateDto {
   email: string;
 
   @IsString()
-  @IsOptional()
-  password: string;
+  @IsNotEmpty()
+  oldPassword: string;
+
+  @IsString()
+  @IsNotEmpty()
+  newPassword: string;
 
   @IsString()
   @IsNotEmpty()

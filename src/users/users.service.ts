@@ -45,13 +45,13 @@ export class UsersService {
       return user;
     }
     const userIndex = this.db.users.findIndex((el) => el.id === id);
-    if (user.password !== dto.password) {
+    if (user.password !== dto.oldPassword) {
       return 'password';
     }
     const updUser = {
       id: user.id,
       login: user.login,
-      password: dto.password,
+      password: dto.newPassword,
       version: ++user.version,
       createdAt: user.createdAt,
       updatedAt: Date.now(),
