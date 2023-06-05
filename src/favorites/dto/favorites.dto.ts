@@ -1,15 +1,12 @@
-import { IsNotEmpty, IsUUID } from 'class-validator';
+import { IsOptional } from 'class-validator';
 import { Artist, Track, Album } from "src/models/Interfaces";
 export class FavoritesDto {
-  @IsUUID()
-  @IsNotEmpty()
+  @IsOptional()
   artists: Artist[];
 
-  @IsUUID()
-  @IsNotEmpty()
+  @IsOptional()
   albums: Album[];
 
-  @IsUUID()
-  @IsNotEmpty()
+  @IsOptional()
   tracks: Track[];
 }
