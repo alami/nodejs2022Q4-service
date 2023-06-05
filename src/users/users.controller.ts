@@ -16,7 +16,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/user-create.dto';
-import { UserValidatePipe } from './userValidate.pipe';
 
 @Controller('user')
 export class UsersController {
