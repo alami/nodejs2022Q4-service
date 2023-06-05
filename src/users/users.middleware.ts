@@ -1,7 +1,6 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { UsersService } from './users.service';
-
 @Injectable()
 export class UsersMiddleware implements NestMiddleware {
   constructor(private user: UsersService) {}
