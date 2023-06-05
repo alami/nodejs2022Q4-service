@@ -1,4 +1,4 @@
-interface User {
+export interface User {
     id: string; // uuid v4
     login: string;
     password: string;
@@ -6,29 +6,33 @@ interface User {
     createdAt: number; // timestamp of creation
     updatedAt: number; // timestamp of last update
 }
+
 // Artist (with attributes)
-interface Artist {
+export interface Artist {
     id: string; // uuid v4
     name: string;
     grammy: boolean;
 }
+
 // Track (with attributes)
-interface Track {
+export interface Track {
     id: string; // uuid v4
     name: string;
     artistId: string | null; // refers to Artist
     albumId: string | null; // refers to Album
     duration: number; // integer number
 }
+
 // Album (with attributes):
-interface Album {
+export interface Album {
     id: string; // uuid v4
     name: string;
     year: number;
     artistId: string | null; // refers to Artist
 }
+
 // Favorites (with attributes):
-interface Favorites {
+export interface Favorites {
     artists: string[]; // favorite artists ids
     albums: string[]; // favorite albums ids
     tracks: string[]; // favorite tracks ids
