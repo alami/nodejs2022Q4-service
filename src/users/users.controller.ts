@@ -1,4 +1,4 @@
-import { UserUpdateDto} from './dto/user-update.dto';
+import { UserUpdateDto } from './dto/user-update.dto';
 import { UsersService } from './users.service';
 import {
   Body,
@@ -12,7 +12,8 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
-  Put, ValidationPipe,
+  Put,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/user-create.dto';
 import { UserValidatePipe } from './userValidate.pipe';
@@ -48,9 +49,7 @@ export class UsersController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  createUser(
-    @Body(new ValidationPipe()) createUserDto: CreateUserDto,
-  ) {
+  createUser(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 

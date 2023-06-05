@@ -1,5 +1,5 @@
-import { ArtistDto } from './dto/artist.dto';
-import { ArtistService } from './artist.service';
+import { AlbumsDto } from './dto/albums.dto';
+import { AlbumsService } from './albums.service';
 import {
   Body,
   Controller,
@@ -11,23 +11,22 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
-  Put,
-  ValidationPipe,
+  Put, ValidationPipe,
 } from '@nestjs/common';
 
-@Controller('artist')
-export class ArtistsController {
-  constructor(private artistsService: ArtistService) {}
+@Controller('album')
+export class AlbumsController {
+  constructor(private albumsService: AlbumsService) {}
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  getartists() {
-    return this.artistsService.getAll();
+  getAlbums() {
+    return this.albumsService.getAll();
   }
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  getartist(
+  getAlbum(
     @Param(
       'id',
       new ParseUUIDPipe({
@@ -37,27 +36,29 @@ export class ArtistsController {
     )
     id: string,
   ) {
-    const artist = this.artistsService.getOneById(id);
-    if (artist === undefined) {
+    const album = this.albumsService.getOneById(id);
+    if (!album) {
       throw new NotFoundException();
     }
-    return artist;
+    return album;
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  createartist(@Body(new ValidationPipe()) createartistDto: ArtistDto) {
-    const art = this.artistsService.create(createartistDto);
-    if (art === undefined) {
+  createAlbum(
+    @Body(new ValidationPipe()) createAlbumDto: AlbumsDto,
+  ) {
+    const album = this.albumsService.create(createAlbumDto);
+    if (!album) {
       throw new NotFoundException();
     }
-    return art;
+    return album;
   }
 
   @Put(':id')
   @HttpCode(HttpStatus.OK)
-  updateartist(
-    @Body(new ValidationPipe()) artistDto: ArtistDto,
+  updateAlbum(
+    @Body(new ValidationPipe()) albumDto: AlbumsDto,
     @Param(
       'id',
       new ParseUUIDPipe({
@@ -67,16 +68,16 @@ export class ArtistsController {
     )
     id: string,
   ) {
-    const artist = this.artistsService.updateOne(id, artistDto);
-    if (artist === undefined) {
+    const album = this.albumsService.updateOne(id, albumDto);
+    if (album === undefined) {
       throw new NotFoundException();
     }
-    return artist;
+    return album;
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  deleteartist(
+  deleteAlbum(
     @Param(
       'id',
       new ParseUUIDPipe({
@@ -86,10 +87,10 @@ export class ArtistsController {
     )
     id: string,
   ) {
-    const art = this.artistsService.deleteArtist(id);
-    if (art === undefined) {
+    const album = this.albumsService.deleteAlbum(id);
+    if (album === undefined) {
       throw new NotFoundException();
     }
-    return art;
+    return album;
   }
 }
