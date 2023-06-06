@@ -11,7 +11,8 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
-  Put, ValidationPipe,
+  Put,
+  ValidationPipe,
 } from '@nestjs/common';
 
 @Controller('track')
@@ -45,9 +46,7 @@ export class TracksController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  createtrack(
-    @Body(new ValidationPipe()) createtrackDto: TracksDto,
-  ) {
+  createtrack(@Body(new ValidationPipe()) createtrackDto: TracksDto) {
     const track = this.tracksService.create(createtrackDto);
     if (track === undefined) {
       throw new NotFoundException();

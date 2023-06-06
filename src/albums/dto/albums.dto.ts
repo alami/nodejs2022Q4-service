@@ -1,5 +1,9 @@
 import {
-  IsNotEmpty, IsNumber, IsString, IsUUID, isUUID
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsUUID,
+  isUUID,
 } from 'class-validator';
 
 export class AlbumsDto {

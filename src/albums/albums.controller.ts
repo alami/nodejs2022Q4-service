@@ -11,7 +11,8 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
-  Put, ValidationPipe,
+  Put,
+  ValidationPipe,
 } from '@nestjs/common';
 
 @Controller('album')
@@ -45,9 +46,7 @@ export class AlbumsController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  createAlbum(
-    @Body(new ValidationPipe()) createAlbumDto: AlbumsDto,
-  ) {
+  createAlbum(@Body(new ValidationPipe()) createAlbumDto: AlbumsDto) {
     const album = this.albumsService.create(createAlbumDto);
     if (!album) {
       throw new NotFoundException();
