@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { TracksDto } from './dto/tracks.dto';
 import { v4 as uuidv4 } from 'uuid';
-import { Artist, Album, Track } from '../models/Interfaces';
+import { Track } from '../models/Interfaces';
 import { DbService } from '../models/db.service';
 
 @Injectable()
